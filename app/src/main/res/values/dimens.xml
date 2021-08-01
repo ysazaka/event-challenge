@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="eventListItemMargin">8dp</dimen>
+    <dimen name="eventListItemMarginTop">16dp</dimen>
+    <dimen name="eventListItemPadding">16dp</dimen>
+
+    <dimen name="eventListImageHeight">200dp</dimen>
+
+    <dimen name="eventDetailStartEndMargin">16dp</dimen>
+    <dimen name="eventDetailButtonMarginBottom">16dp</dimen>
+    <dimen name="eventDetailButtonMinHeight">64dp</dimen>
+
+    <dimen name="eventDetailImageMinHeight">240dp</dimen>
+
+</resources>

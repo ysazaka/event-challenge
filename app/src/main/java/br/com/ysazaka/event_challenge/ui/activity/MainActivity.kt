@@ -1,7 +1,8 @@
-package br.com.ysazaka.event_challenge
+package br.com.ysazaka.event_challenge.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.com.ysazaka.event_challenge.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

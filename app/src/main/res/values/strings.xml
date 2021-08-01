@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">event-challenge</string>
+    <string name="app_name">Event Finder</string>
+
+    <string name="share">Compartilhar</string>
+
+    <string name="event_name">Nome do evento</string>
+    <string name="event_description">Descrição do evento</string>
+    <string name="event_date">Data do evento</string>
+    <string name="event_checkin">Participar do evento</string>
+    <string name="next_events">Próximos eventos</string>
 </resources>
