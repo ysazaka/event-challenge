@@ -2,12 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.ysazaka.event_challenge" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:name=".BaseApplication"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Eventchallenge" >
+        android:theme="@style/Theme.Eventchallenge"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.activity.EventDetailActivity"
             android:exported="true"

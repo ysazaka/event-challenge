@@ -1,12 +1,36 @@
 package br.com.ysazaka.event_challenge.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import br.com.ysazaka.event_challenge.R
+import br.com.ysazaka.event_challenge.databinding.ActivityMainBinding
+import br.com.ysazaka.event_challenge.dto.EventDto
+import br.com.ysazaka.event_challenge.util.extensions.toast
+import br.com.ysazaka.event_challenge.viewmodel.GetEventListViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+
+    private val binding: ActivityMainBinding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
+
+    private val viewModel: GetEventListViewModel by viewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
+        setupObservers()
+
+        viewModel.getEventList()
     }
+
+    fun setupObservers() {
+        viewModel.eventListResult.observe(this) { eventList -> setupEventList(eventList) }
+        viewModel.eventListError.observe(this) { onGetDataError() }
+        viewModel.serverError.observe(this, ::onServerError)
+    }
+
+    fun setupEventList(eventList: List<EventDto>) {
+        this.toast("Teste de integração realizado com sucesso")
+    }
+
 }
