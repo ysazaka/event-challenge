@@ -11,6 +11,6 @@
     <dimen name="eventDetailButtonMarginBottom">16dp</dimen>
     <dimen name="eventDetailButtonMinHeight">64dp</dimen>
 
-    <dimen name="eventDetailImageMinHeight">240dp</dimen>
+    <dimen name="eventDetailImageMinHeight">315dp</dimen>
 
 </resources>

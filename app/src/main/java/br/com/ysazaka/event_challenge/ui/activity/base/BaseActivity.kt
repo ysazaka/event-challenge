@@ -1,5 +1,6 @@
-package br.com.ysazaka.event_challenge.ui.activity
+package br.com.ysazaka.event_challenge.ui.activity.base
 
+import android.content.DialogInterface
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +8,6 @@ import br.com.ysazaka.event_challenge.R
 import br.com.ysazaka.event_challenge.ui.loading.FullScreenLoading
 import br.com.ysazaka.event_challenge.util.extensions.toGone
 import br.com.ysazaka.event_challenge.util.extensions.toVisible
-import br.com.ysazaka.event_challenge.util.extensions.toast
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 /**
@@ -57,6 +57,18 @@ abstract class BaseActivity: AppCompatActivity() {
             .setMessage(message)
             .setPositiveButton(resources.getString(R.string.ok)) { dialog, _ ->
                 dialog.dismiss()
+            }
+            .show()
+    }
+
+    protected fun showOkAlertDialogThenFinishTheActivity(message: String) {
+        MaterialAlertDialogBuilder(this)
+            .setMessage(message)
+            .setPositiveButton(resources.getString(R.string.ok)) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setOnDismissListener {
+                finish()
             }
             .show()
     }

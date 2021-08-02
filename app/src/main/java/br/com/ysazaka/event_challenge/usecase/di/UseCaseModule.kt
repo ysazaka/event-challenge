@@ -1,6 +1,7 @@
 package br.com.ysazaka.event_challenge.usecase.di
 
 import br.com.ysazaka.event_challenge.usecase.GetEventListUseCase
+import br.com.ysazaka.event_challenge.usecase.GetSelectedEventUseCase
 import org.koin.dsl.module
 
 /**
@@ -8,4 +9,5 @@ import org.koin.dsl.module
  */
 fun createUseCaseModule() = module {
     single { GetEventListUseCase(get()) }
+    single { GetSelectedEventUseCase(get()) }
 }

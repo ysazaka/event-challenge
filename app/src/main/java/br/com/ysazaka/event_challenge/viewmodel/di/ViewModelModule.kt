@@ -1,6 +1,7 @@
 package br.com.ysazaka.event_challenge.viewmodel.di
 
 import br.com.ysazaka.event_challenge.viewmodel.GetEventListViewModel
+import br.com.ysazaka.event_challenge.viewmodel.GetSelectedEventViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -10,5 +11,6 @@ import org.koin.dsl.module
 fun createViewModelModule() = module {
 
     viewModel { GetEventListViewModel(get()) }
+    viewModel { GetSelectedEventViewModel(get()) }
 
 }

@@ -3,6 +3,7 @@ package br.com.ysazaka.event_challenge.ui.activity
 import android.os.Bundle
 import br.com.ysazaka.event_challenge.databinding.ActivityMainBinding
 import br.com.ysazaka.event_challenge.dto.EventDto
+import br.com.ysazaka.event_challenge.ui.activity.base.BaseActivity
 import br.com.ysazaka.event_challenge.ui.adapter.EventListAdapter
 import br.com.ysazaka.event_challenge.viewmodel.GetEventListViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -24,15 +25,14 @@ class MainActivity : BaseActivity() {
         viewModel.getEventList()
     }
 
-    fun setupObservers() {
+    private fun setupObservers() {
         viewModel.eventListResult.observe(this) { eventList -> setupEventList(eventList) }
         viewModel.eventListError.observe(this) { onGetDataError() }
         viewModel.serverError.observe(this, ::onServerError)
     }
 
-    fun setupEventList(eventList: List<EventDto>) {
+    private fun setupEventList(eventList: List<EventDto>) {
         hideLoading()
-
         binding.rvEventList.adapter = EventListAdapter(eventList, this::onEventClicked)
     }
 

@@ -44,8 +44,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/eventDetailImageMinHeight"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_event"/>
+                android:scaleType="centerInside"
+                tools:srcCompat="@drawable/ic_event"/>
 
             <TextView
                 android:id="@+id/tvEventName"
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 style="@style/EventDetailDate"
                 android:layout_marginHorizontal="@dimen/eventDetailStartEndMargin"
-                tools:text="@string/event_date"/>
+                android:text="@string/event_date"/>
 
             <TextView
                 android:id="@+id/tvEventDescription"
