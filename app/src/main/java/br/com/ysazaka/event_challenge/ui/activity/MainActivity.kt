@@ -20,6 +20,7 @@ class MainActivity : BaseActivity() {
         setContentView(binding.root)
         setupObservers()
 
+        showLoading()
         viewModel.getEventList()
     }
 
@@ -30,7 +31,8 @@ class MainActivity : BaseActivity() {
     }
 
     fun setupEventList(eventList: List<EventDto>) {
-        this.toast("Teste de integração realizado com sucesso")
+        hideLoading()
+        showOkAlertDialog("Teste de integração realizado com sucesso")
     }
 
 }

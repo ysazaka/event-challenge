@@ -4,6 +4,7 @@
     <string name="base_url">http://5f5a8f24d44d640016169133.mockapi.io/api/</string>
     <string name="share">Compartilhar</string>
     <string name="getDataErrorMessage">Houve um problema para pegar os dados, tente novamente.</string>
+    <string name="ok">OK</string>
 
     <string name="event_name">Nome do evento</string>
     <string name="event_description">Descrição do evento</string>
