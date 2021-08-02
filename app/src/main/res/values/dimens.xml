@@ -5,7 +5,7 @@
     <dimen name="eventListItemMarginTop">16dp</dimen>
     <dimen name="eventListItemPadding">16dp</dimen>
 
-    <dimen name="eventListImageHeight">200dp</dimen>
+    <dimen name="eventListImageHeight">150dp</dimen>
 
     <dimen name="eventDetailStartEndMargin">16dp</dimen>
     <dimen name="eventDetailButtonMarginBottom">16dp</dimen>

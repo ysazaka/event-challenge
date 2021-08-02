@@ -35,8 +35,9 @@
         app:layout_constraintTop_toBottomOf="@+id/appbar"
         android:paddingTop="@dimen/eventListItemPadding"
         android:paddingBottom="@dimen/eventListItemPadding"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="2"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:itemCount="3"
         tools:listitem="@layout/item_event_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
