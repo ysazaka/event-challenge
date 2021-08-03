@@ -11,4 +11,7 @@
     <string name="event_date">Data do evento: %s</string>
     <string name="event_checkin">Participar do evento</string>
     <string name="next_events">Próximos eventos</string>
+    <string name="share_intent_description">Gostaria de participar do evento \"%s\"?
+        Então procure na sua loja de aplicativos pelo app Event Finder!! Lá você encontrará este
+        e muitos outros eventos para participar!</string>
 </resources>
