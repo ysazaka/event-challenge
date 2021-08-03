@@ -2,7 +2,9 @@ package br.com.ysazaka.event_challenge.ui.activity
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.widget.ImageView
 import br.com.ysazaka.event_challenge.R
 import br.com.ysazaka.event_challenge.databinding.ActivityEventDetailBinding
 import br.com.ysazaka.event_challenge.dto.EventDto
@@ -10,6 +12,10 @@ import br.com.ysazaka.event_challenge.ui.activity.base.BaseActivity
 import br.com.ysazaka.event_challenge.util.extensions.getDate
 import br.com.ysazaka.event_challenge.viewmodel.GetSelectedEventViewModel
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EventDetailActivity : BaseActivity() {
@@ -73,17 +79,44 @@ class EventDetailActivity : BaseActivity() {
 
     private fun setupEvent(event: EventDto) {
         this.event = event
-        hideLoading()
 
         Glide.with(this)
             .load(event.image)
             .error(resources.getDrawable(R.drawable.ic_event))
-            .into(binding.ivEventDetail)
+            .listener(object : RequestListener<Drawable> {
+                override fun onLoadFailed(
+                    e: GlideException?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    setupEventDetails(event)
+                    return false
+                }
 
+                override fun onResourceReady(
+                    resource: Drawable?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    dataSource: DataSource?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    binding.ivEventDetail.scaleType = ImageView.ScaleType.CENTER_CROP
+                    setupEventDetails(event)
+                    return false
+                }
+            })
+            .into(binding.ivEventDetail)
+    }
+
+    private fun setupEventDetails(event: EventDto) {
         binding.tvEventName.text = event.title
         binding.tvEventDate.text = resources.getString(R.string.event_date, event.date.getDate())
         binding.tvEventDescription.text = event.description
+
+        hideLoading()
     }
+
 
     companion object {
         private const val EVENT_ID = "event_id"
