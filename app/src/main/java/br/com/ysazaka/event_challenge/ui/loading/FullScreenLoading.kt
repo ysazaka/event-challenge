@@ -25,7 +25,7 @@ class FullScreenLoading (context: Context) : LinearLayout(context) {
         setBackgroundColor(
             ContextCompat.getColor(
                 context,
-                R.color.loadingBackdropLight
+                R.color.loading_backdrop_light
             )
         )
     }

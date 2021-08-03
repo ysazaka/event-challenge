@@ -3,10 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/yoshi/AndroidStudioProjects/eventchallenge/app/src/main/res/drawable/bg_data_input_dialog_button.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/yoshi/AndroidStudioProjects/eventchallenge/app/src/main/res/drawable/bg_data_input_dialog_button_active.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/yoshi/AndroidStudioProjects/eventchallenge/app/src/main/res/drawable/bg_data_input_dialog_button_inactive.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/yoshi/AndroidStudioProjects/eventchallenge/app/src/main/res/drawable/bg_dialog_edittext.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/yoshi/AndroidStudioProjects/eventchallenge/app/src/main/res/drawable/bg_shape_rounded_white.xml" value="0.2708333333333333" />
         <entry key="..\:/Users/yoshi/AndroidStudioProjects/eventchallenge/app/src/main/res/drawable/ic_back.xml" value="0.2708333333333333" />
         <entry key="..\:/Users/yoshi/AndroidStudioProjects/eventchallenge/app/src/main/res/layout/activity_event_detail.xml" value="0.2546875" />
         <entry key="..\:/Users/yoshi/AndroidStudioProjects/eventchallenge/app/src/main/res/layout/activity_main.xml" value="0.240625" />
         <entry key="..\:/Users/yoshi/AndroidStudioProjects/eventchallenge/app/src/main/res/layout/event_list_item.xml" value="0.2546875" />
+        <entry key="..\:/Users/yoshi/AndroidStudioProjects/eventchallenge/app/src/main/res/layout/fragment_data_input_dialog.xml" value="0.2546875" />
         <entry key="..\:/Users/yoshi/AndroidStudioProjects/eventchallenge/app/src/main/res/layout/item_event_list.xml" value="0.25076923076923074" />
         <entry key="..\:/Users/yoshi/AndroidStudioProjects/eventchallenge/app/src/main/res/layout/view_fullscreen_loading.xml" value="0.2546875" />
         <entry key="..\:/Users/yoshi/AndroidStudioProjects/eventchallenge/app/src/main/res/menu/event_detail_toolbar_menu.xml" value="0.2546875" />

@@ -1,5 +1,6 @@
 package br.com.ysazaka.event_challenge.network.service
 
+import br.com.ysazaka.event_challenge.model.CheckinResult
 import br.com.ysazaka.event_challenge.model.Event
 import br.com.ysazaka.event_challenge.model.InterestedPerson
 import io.reactivex.Completable
@@ -21,6 +22,6 @@ interface EventService {
     suspend fun getSelectedEvent(@Path("id") id: String): Event
 
     @POST("checkin")
-    suspend fun checkinInterestedPersonOnTheEvent(@Body interestedPerson: InterestedPerson): Completable
+    suspend fun checkinInterestedPersonOnTheEvent(@Body interestedPerson: InterestedPerson): CheckinResult
 
 }

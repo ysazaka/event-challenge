@@ -10,7 +10,9 @@ import br.com.ysazaka.event_challenge.R
 import br.com.ysazaka.event_challenge.databinding.ActivityEventDetailBinding
 import br.com.ysazaka.event_challenge.dto.EventDto
 import br.com.ysazaka.event_challenge.ui.activity.base.BaseActivity
+import br.com.ysazaka.event_challenge.ui.dialog.DataInputDialogFragment
 import br.com.ysazaka.event_challenge.util.extensions.getDate
+import br.com.ysazaka.event_challenge.viewmodel.CheckinInterestedPersonOnTheEventViewModel
 import br.com.ysazaka.event_challenge.viewmodel.GetSelectedEventViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -25,7 +27,9 @@ class EventDetailActivity : BaseActivity() {
         ActivityEventDetailBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: GetSelectedEventViewModel by viewModel()
+    private val getSelectedEventViewModel: GetSelectedEventViewModel by viewModel()
+    private val checkinInterestedPersonOnTheEventViewModel:
+            CheckinInterestedPersonOnTheEventViewModel by viewModel()
 
     private val eventId by lazy { intent.getStringExtra(EVENT_ID)?: "0" }
 
@@ -36,9 +40,10 @@ class EventDetailActivity : BaseActivity() {
         setContentView(binding.root)
         setupToolbar()
         setupObservers()
+        setupListeners()
 
         showLoading()
-        viewModel.getEventList(eventId)
+        getSelectedEventViewModel.getEventList(eventId)
     }
 
     private fun setupToolbar() {
@@ -70,11 +75,23 @@ class EventDetailActivity : BaseActivity() {
     }
 
     private fun setupObservers() {
-        viewModel.selectedEventResult.observe(this) { event -> setupEvent(event) }
-        viewModel.selectedEventError.observe(this) {
+        getSelectedEventViewModel.selectedEventResult.observe(this) { event -> setupEvent(event) }
+        getSelectedEventViewModel.selectedEventError.observe(this) {
             showOkAlertDialogThenFinishTheActivity(getString(R.string.getDataErrorMessage))
         }
-        viewModel.serverError.observe(this, ::onServerError)
+        getSelectedEventViewModel.serverError.observe(this, ::onServerError)
+        checkinInterestedPersonOnTheEventViewModel.checkinSuccess.observe(this) { onCheckinSuccess() }
+        checkinInterestedPersonOnTheEventViewModel.checkinError.observe(this) {
+            showOkAlertDialog(getString(R.string.getDataErrorMessage))
+        }
+    }
+
+    private fun setupListeners() {
+        binding.btnEventCheckin.setOnClickListener { openDataInputDialog() }
+    }
+
+    private fun openDataInputDialog() {
+        DataInputDialogFragment().show(supportFragmentManager, getString(R.string.checkin))
     }
 
     private fun setupEvent(event: EventDto) {
@@ -120,6 +137,15 @@ class EventDetailActivity : BaseActivity() {
         hideLoading()
     }
 
+    private fun onCheckinSuccess() {
+        showOkAlertDialog(getString(R.string.checkin_success))
+    }
+
+    fun getDialogDataToCheckin(name: String, email: String) {
+        checkinInterestedPersonOnTheEventViewModel.checkinInterestedPersonOnTheEvent(
+            eventId, name, email
+        )
+    }
 
     companion object {
         private const val EVENT_ID = "event_id"

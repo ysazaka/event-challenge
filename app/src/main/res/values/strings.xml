@@ -5,6 +5,8 @@
     <string name="share">Compartilhar</string>
     <string name="getDataErrorMessage">Houve um problema para pegar os dados, tente novamente.</string>
     <string name="ok">OK</string>
+    <string name="name">Nome</string>
+    <string name="email">E-mail</string>
 
     <string name="event_name">Nome do evento</string>
     <string name="event_description">Descrição do evento</string>
@@ -14,4 +16,7 @@
     <string name="share_intent_description">Gostaria de participar do evento \"%s\"?
         Então procure na sua loja de aplicativos pelo app Event Finder!! Lá você encontrará este
         e muitos outros eventos para participar!</string>
+    <string name="inform_your_data">Informe seus dados para se cadastrar no evento</string>
+    <string name="checkin_success">Parabéns! Você está cadastrado para participar do evento.</string>
+    <string name="checkin">checkin</string>
 </resources>
