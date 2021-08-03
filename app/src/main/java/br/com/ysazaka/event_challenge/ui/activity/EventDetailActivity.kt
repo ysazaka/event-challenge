@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.widget.ImageView
+import androidx.core.content.res.ResourcesCompat
 import br.com.ysazaka.event_challenge.R
 import br.com.ysazaka.event_challenge.databinding.ActivityEventDetailBinding
 import br.com.ysazaka.event_challenge.dto.EventDto
@@ -26,9 +27,8 @@ class EventDetailActivity : BaseActivity() {
 
     private val viewModel: GetSelectedEventViewModel by viewModel()
 
-    private val eventId by lazy {
-        intent.getStringExtra(EVENT_ID)?: "0"
-    }
+    private val eventId by lazy { intent.getStringExtra(EVENT_ID)?: "0" }
+
     private lateinit var event: EventDto
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +62,7 @@ class EventDetailActivity : BaseActivity() {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT,
                 resources.getString(R.string.share_intent_description, event.title))
-            type = "text/plain"
+            type = shareIntentType
         }
 
         val shareIntent = Intent.createChooser(eventShareIntent, null)
@@ -82,7 +82,7 @@ class EventDetailActivity : BaseActivity() {
 
         Glide.with(this)
             .load(event.image)
-            .error(resources.getDrawable(R.drawable.ic_event))
+            .error(ResourcesCompat.getDrawable(resources, R.drawable.ic_event, null))
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
                     e: GlideException?,
@@ -90,8 +90,7 @@ class EventDetailActivity : BaseActivity() {
                     target: Target<Drawable>?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    setupEventDetails(event)
-                    return false
+                    return imageOrPlaceholderHasLoaded()
                 }
 
                 override fun onResourceReady(
@@ -102,6 +101,10 @@ class EventDetailActivity : BaseActivity() {
                     isFirstResource: Boolean
                 ): Boolean {
                     binding.ivEventDetail.scaleType = ImageView.ScaleType.CENTER_CROP
+                    return imageOrPlaceholderHasLoaded()
+                }
+
+                private fun imageOrPlaceholderHasLoaded(): Boolean {
                     setupEventDetails(event)
                     return false
                 }
@@ -120,6 +123,7 @@ class EventDetailActivity : BaseActivity() {
 
     companion object {
         private const val EVENT_ID = "event_id"
+        private const val shareIntentType = "text/plain"
 
         fun newIntent(context: Context, eventId: String): Intent {
             return Intent(context, EventDetailActivity::class.java)

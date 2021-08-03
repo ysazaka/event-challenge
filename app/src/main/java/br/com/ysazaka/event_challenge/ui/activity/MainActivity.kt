@@ -32,8 +32,8 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupEventList(eventList: List<EventDto>) {
-        hideLoading()
         binding.rvEventList.adapter = EventListAdapter(eventList, this::onEventClicked)
+        hideLoading()
     }
 
     private fun onEventClicked(eventDto: EventDto) {
