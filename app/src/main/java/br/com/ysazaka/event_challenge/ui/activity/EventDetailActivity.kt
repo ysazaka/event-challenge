@@ -43,7 +43,7 @@ class EventDetailActivity : BaseActivity() {
         setupListeners()
 
         showLoading()
-        getSelectedEventViewModel.getEventList(eventId)
+        getSelectedEventViewModel.getEventById(eventId)
     }
 
     private fun setupToolbar() {

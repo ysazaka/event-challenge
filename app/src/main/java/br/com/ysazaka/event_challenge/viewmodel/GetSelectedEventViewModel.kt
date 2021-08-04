@@ -24,7 +24,7 @@ class GetSelectedEventViewModel (
     val selectedEventError: LiveData<Unit>
         get() = mSelectedEventError
 
-    fun getEventList(eventId: String) {
+    fun getEventById(eventId: String) {
         viewModelScope.launch {
             when (val result = getSelectedEventUseCase.execute(eventId)) {
                 is RemoteResult.Success -> mSelectedEventResult.postValue(result.data)
